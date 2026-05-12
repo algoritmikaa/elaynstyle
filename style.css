@@ -1,0 +1,677 @@
+/* ========== style.css ========== */
+
+/* ---------- Переменные (светлая тема по умолчанию) ---------- */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f9fc;
+  --color-text: #1a2b48;
+  --color-heading: #0b1d3a;
+  --color-accent: #0077B6;
+  --color-accent2: #F4A261;
+  --color-nav: #1a2b48;
+  --color-card-bg: #ffffff;
+  --color-overlay-bg: rgba(255,255,255,0.85);
+  --color-cloud: rgba(255, 255, 255, 0.8);
+  --color-header-bg: rgba(255, 255, 255, 0.92);
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-toggle-track: #ddd;
+  --color-toggle-thumb: #ffffff;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --transition-speed: 0.5s;
+}
+
+/* ---------- Тёмная тема ---------- */
+/* Активируется, когда чекбокс нажат и влияет на весь .site-wrapper */
+#theme-toggle:checked ~ .site-wrapper {
+  --color-bg: #0B1D3A;
+  --color-bg-alt: #112544;
+  --color-text: #e0e6f0;
+  --color-heading: #ffffff;
+  --color-accent: #48CAE4;
+  --color-accent2: #F4A261;
+  --color-nav: #e0e6f0;
+  --color-card-bg: #142d54;
+  --color-overlay-bg: rgba(11, 29, 58, 0.8);
+  --color-cloud: rgba(72, 202, 228, 0.15);
+  --color-header-bg: rgba(11, 29, 58, 0.92);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-toggle-track: #3a5a80;
+  --color-toggle-thumb: #fff;
+}
+
+/* Плавный переход всех цветовых свойств */
+.site-wrapper,
+.header,
+.hero,
+.about,
+.catalog,
+.contacts,
+.footer,
+.btn,
+.nav-link,
+.product-card,
+.phone-number,
+.cloud,
+.toggle-track,
+.toggle-thumb {
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* ---------- Базовые стили ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Чекбокс темы (скрыт) ---------- */
+.theme-toggle-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Переключатель темы (toggle) ---------- */
+.theme-toggle-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.toggle-track {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  background-color: var(--color-toggle-track);
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.toggle-icon {
+  font-size: 14px;
+  line-height: 1;
+  z-index: 1;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.sun-icon { color: #f39c12; }
+.moon-icon { color: #bdc3c7; }
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-toggle-thumb);
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), background-color var(--transition-speed) ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Состояние чекбокса: перемещаем ползунок и меняем видимость иконок */
+#theme-toggle:checked ~ .site-wrapper .toggle-thumb {
+  transform: translateX(28px);
+}
+#theme-toggle:checked ~ .site-wrapper .sun-icon {
+  opacity: 0.3;
+}
+#theme-toggle:checked ~ .site-wrapper .moon-icon {
+  opacity: 1;
+}
+/* по умолчанию луна полупрозрачна */
+.moon-icon { opacity: 0.3; }
+.sun-icon { opacity: 1; }
+
+/* ---------- Шапка ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px var(--color-shadow);
+  padding: 12px 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  transition: color var(--transition-speed);
+}
+
+.nav-list {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--color-nav);
+  padding: 8px 0;
+  position: relative;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #d4eaff 0%, #ffffff 80%);
+  overflow: hidden;
+  padding: 120px 20px 60px;
+  transition: background var(--transition-speed) ease;
+}
+
+/* затемнение при тёмной теме для hero */
+#theme-toggle:checked ~ .site-wrapper .hero {
+  background: linear-gradient(135deg, #0e2748 0%, #0B1D3A 80%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.hero-plane {
+  color: var(--color-accent);
+  margin: 0 auto 24px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  color: var(--color-heading);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 36px;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+/* Кнопка с эффектом взлётной полосы */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+  background-size: 200% auto;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,119,182,0.3);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,119,182,0.5);
+}
+
+/* Облака */
+.cloud {
+  position: absolute;
+  background: var(--color-cloud);
+  border-radius: 50%;
+  opacity: 0.6;
+  will-change: transform;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 50%;
+  height: 80%;
+  top: -40%;
+  left: 15%;
+}
+
+.cloud::after {
+  width: 70%;
+  height: 100%;
+  top: -30%;
+  left: 30%;
+}
+
+.cloud--1 { width: 160px; height: 50px; top: 12%; left: -10%; animation: moveClouds 24s linear infinite; }
+.cloud--2 { width: 200px; height: 60px; top: 35%; left: 70%; animation: moveClouds 30s linear infinite reverse; }
+.cloud--3 { width: 120px; height: 40px; top: 60%; left: 20%; animation: moveClouds 18s linear infinite; }
+.cloud--4 { width: 180px; height: 55px; top: 78%; left: 60%; animation: moveClouds 27s linear infinite reverse; }
+.cloud--5 { width: 100px; height: 35px; top: 18%; left: 45%; animation: moveClouds 21s linear infinite; }
+
+/* ---------- Анимации ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes moveClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 200px)); }
+}
+
+/* ---------- Секции с анимацией появления ---------- */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+/* Задержки для fallback (без scroll-driven) */
+.section-reveal:nth-of-type(1) { animation-delay: 0.1s; }
+.section-reveal:nth-of-type(2) { animation-delay: 0.3s; }
+.section-reveal:nth-of-type(3) { animation-delay: 0.5s; }
+.section-reveal:nth-of-type(4) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll-driven animation (для браузеров с поддержкой) */
+@supports (animation-timeline: view()) {
+  .section-reveal {
+    animation: fadeInUp 1s both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+    animation-delay: 0s; /* сброс задержек */
+    opacity: 1; /* убираем начальную прозрачность */
+    transform: none;
+  }
+}
+
+/* ---------- О нас ---------- */
+.about {
+  padding: 100px 0 80px;
+  text-align: center;
+  background-color: var(--color-bg-alt);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--color-heading);
+  margin-bottom: 20px;
+}
+
+.route-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 28px;
+}
+
+.route-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.route-line {
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-accent), transparent);
+}
+
+.about-text {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ---------- Каталог ---------- */
+.catalog {
+  padding: 90px 0;
+  background-color: var(--color-bg);
+}
+
+.catalog-description {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 52px;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.product-card {
+  background-color: var(--color-card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--color-shadow);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px var(--color-shadow);
+}
+
+.product-image {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #eef3f8;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-overlay-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+  color: var(--color-heading);
+  backdrop-filter: blur(4px);
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+.product-name {
+  padding: 16px;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-heading);
+  text-align: center;
+}
+
+/* ---------- Контакты ---------- */
+.contacts {
+  padding: 100px 0;
+  text-align: center;
+  background-color: var(--color-bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.contacts-clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 40%, var(--color-cloud) 1px, transparent 1px),
+              radial-gradient(circle at 80% 70%, var(--color-cloud) 2px, transparent 2px);
+  background-size: 80px 80px, 120px 120px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.contacts-phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 36px 0 16px;
+  flex-wrap: wrap;
+}
+
+.phone-icon {
+  font-size: 2rem;
+}
+
+.phone-number {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.phone-number:hover {
+  color: var(--color-accent2);
+}
+
+.contacts-text {
+  margin-bottom: 36px;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  gap: 8px;
+  padding: 14px 32px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #1fb855;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-icon {
+  font-size: 1.2rem;
+}
+
+/* ---------- Футер ---------- */
+.footer {
+  padding: 32px 0 24px;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-shadow);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-copy {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-left: 8px;
+  opacity: 0.8;
+}
+
+.footer-phone a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.footer-runway {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.runway-stripe {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-accent), transparent);
+  opacity: 0.5;
+}
+
+/* ---------- Адаптивность ---------- */
+@media (max-width: 900px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .header-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nav-list {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-list {
+    gap: 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .phone-number {
+    font-size: 1.8rem;
+  }
+}
