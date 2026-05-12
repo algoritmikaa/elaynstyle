@@ -1,0 +1,194 @@
+<!-- ========== index.html ========== -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>elaynstyle — авторские платки</title>
+  <!-- Подключение шрифтов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Чекбокс переключения темы (обязан быть самым первым в body) -->
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+
+  <!-- Вся страница обернута для работы селектора ~ -->
+  <div class="site-wrapper">
+
+    <!-- Шапка -->
+    <header class="header" id="home">
+      <div class="header-container">
+        <div class="logo">
+          <a href="#home" class="logo-link">
+            <span class="logo-icon">✈</span>
+            <span class="logo-text">elaynstyle</span>
+          </a>
+        </div>
+        <nav class="nav" aria-label="Основная навигация">
+          <ul class="nav-list">
+            <li><a href="#about" class="nav-link">О нас</a></li>
+            <li><a href="#catalog" class="nav-link">Платки</a></li>
+            <li><a href="#contacts" class="nav-link">Контакты</a></li>
+          </ul>
+        </nav>
+        <!-- Переключатель темы -->
+        <label for="theme-toggle" class="theme-toggle-label" aria-label="Переключить тему">
+          <span class="toggle-track">
+            <span class="toggle-icon sun-icon">☀</span>
+            <span class="toggle-icon moon-icon">🌙</span>
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="hero">
+        <!-- Анимированные облака -->
+        <div class="cloud cloud--1" aria-hidden="true"></div>
+        <div class="cloud cloud--2" aria-hidden="true"></div>
+        <div class="cloud cloud--3" aria-hidden="true"></div>
+        <div class="cloud cloud--4" aria-hidden="true"></div>
+        <div class="cloud cloud--5" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <!-- Парящий самолёт SVG -->
+          <div class="hero-plane" aria-hidden="true">
+            <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 35 L20 10 L40 20 L60 5 L78 20 L55 35 L30 25 L10 38 Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+              <path d="M45 15 L55 10 L50 20 Z" fill="currentColor"/>
+              <circle cx="70" cy="20" r="3" fill="currentColor"/>
+            </svg>
+          </div>
+          <h1 class="hero-title">Искусство в каждом полёте</h1>
+          <p class="hero-subtitle">Авторские платки elaynstyle — когда небо вдохновляет</p>
+          <a href="#catalog" class="btn btn-primary runway-btn">Смотреть платки</a>
+        </div>
+      </section>
+
+      <!-- О нас -->
+      <section class="about section-reveal" id="about">
+        <div class="container">
+          <h2 class="section-title">elaynstyle</h2>
+          <div class="route-lines" aria-hidden="true">
+            <span class="route-dot"></span>
+            <span class="route-line"></span>
+            <span class="route-dot"></span>
+          </div>
+          <p class="about-text">
+            elaynstyle — это больше, чем аксессуары. <br>Это страсть к авиации, выраженная в шёлке и кашемире. Каждый платок — отсылка к легендарным самолётам и бескрайнему небу.
+          </p>
+        </div>
+      </section>
+
+      <!-- Каталог / Платки -->
+      <section class="catalog section-reveal" id="catalog">
+        <div class="container">
+          <h2 class="section-title">Наша коллекция</h2>
+          <p class="catalog-description">Платки, навеянные авиацией — выберите тот, что говорит о свободе</p>
+          <div class="catalog-grid">
+            <!-- Карточка 1 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?q=80&w=400" alt="Платок эскиз облаков" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «Боинг»</h3>
+            </div>
+            <!-- Карточка 2 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?q=80&w=400" alt="Шёлковый платок с узором" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «ИЛ-76»</h3>
+            </div>
+            <!-- Карточка 3 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=400" alt="Кашемировый платок" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «Ту-144»</h3>
+            </div>
+            <!-- Карточка 4 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1584030373081-f37b7bb4fa8e?q=80&w=400" alt="Платок с геометрией" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «Аэробус»</h3>
+            </div>
+            <!-- Карточка 5 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1604868189405-56a3b5a9b5b8?q=80&w=400" alt="Воздушный платок" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «Конкорд»</h3>
+            </div>
+            <!-- Карточка 6 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=400" alt="Платок с авиационным принтом" loading="lazy">
+                <div class="product-overlay">
+                  <span>Позвоните для заказа</span>
+                </div>
+              </div>
+              <h3 class="product-name">Платок «МИГ»</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section class="contacts section-reveal" id="contacts">
+        <div class="container">
+          <h2 class="section-title">Позвоните нам</h2>
+          <div class="contacts-phone">
+            <span class="phone-icon">📞</span>
+            <a href="tel:89266220095" class="phone-number">8 (926) 622-00-95</a>
+          </div>
+          <p class="contacts-text">Готовы помочь с выбором и ответить на любые вопросы.</p>
+          <a href="https://wa.me/79266220095" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <span class="whatsapp-icon">💬</span> Связаться в WhatsApp
+          </a>
+        </div>
+        <!-- Едва заметные облака на фоне -->
+        <div class="contacts-clouds" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-logo">
+          <span class="logo-icon">✈</span> elaynstyle <span class="footer-copy">© 2026</span>
+        </div>
+        <div class="footer-phone">
+          <a href="tel:89266220095">8 (926) 622-00-95</a>
+        </div>
+        <div class="footer-runway" aria-hidden="true">
+          <span class="runway-stripe"></span>
+          <span class="runway-stripe"></span>
+          <span class="runway-stripe"></span>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /site-wrapper -->
+</body>
+</html>
