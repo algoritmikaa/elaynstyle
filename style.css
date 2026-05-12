@@ -22,7 +22,6 @@
 }
 
 /* ---------- Тёмная тема ---------- */
-/* Активируется, когда чекбокс нажат и влияет на весь .site-wrapper */
 #theme-toggle:checked ~ .site-wrapper {
   --color-bg: #0B1D3A;
   --color-bg-alt: #112544;
@@ -430,11 +429,13 @@ ul {
   background: linear-gradient(to right, var(--color-accent), transparent);
 }
 
+/* ИСПРАВЛЕНИЕ: явно задаём цвет текста */
 .about-text {
   max-width: 650px;
   margin: 0 auto;
   font-size: 1.15rem;
   line-height: 1.7;
+  color: var(--color-text);   /* <-- добавлено */
 }
 
 /* ---------- Каталог ---------- */
@@ -566,6 +567,7 @@ ul {
   margin-bottom: 36px;
   font-size: 1.05rem;
   opacity: 0.9;
+  color: var(--color-text);   /* добавлено для надёжности */
 }
 
 .btn-whatsapp {
